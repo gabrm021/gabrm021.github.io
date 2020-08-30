@@ -8,12 +8,15 @@
    <div id="load">
        <h2>Carga de datos</h2>
        <input id ="browseFile" type ="file">
+       <button type="button" onclick="valTxtFunc()">Validar TXT</button>
+       <p id= "valResult"></p>
+       <p id= "valval"></p>
 
    </div>   
    
    <div id="process">
         <h2>Proceso de clasificacion</h2>
-        <button type="button" onclick="ClassFun()">Iniciar proceso de clasificacion</button>
+        <button type="button" onclick="ClassFunc()">Iniciar proceso de clasificacion</button>
         <p id= "procStatus"> En proceso.../Proceso Finalizado</p>
     </div>
    
@@ -23,7 +26,13 @@
    </div>
 
    <script>
-       var filePath = '';
+       function valTxtFunc(){
+           
+            var x = "";
+            x = browseFile.value
+            document.getElementById("valResult").innerHTML = x;
+
+       }
    </script>
 
 </body>
