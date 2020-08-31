@@ -7,7 +7,7 @@
 <body>
    <div id="load">
        <h2>Carga de datos</h2>
-       <input id ="browseFile" type ="file">
+       <input id ="browseFile" type ="file" onclick="cleanFunc()">
        <button type="button" onclick="valTxtFunc()">Validar TXT</button>
        <p id= "valResult"></p>
        <p id= "valval"></p>
@@ -32,6 +32,22 @@
             x = browseFile.value
             document.getElementById("valResult").innerHTML = x;
 
+            var istxt = false;
+            istxt = x.endsWith(".txt");
+            
+            if (istxt){
+                document.getElementById("valval").innerHTML = "True";
+            }
+            else {
+                document.getElementById("valval").innerHTML = "False";
+
+            }
+       }
+
+       function cleanFunc(){
+           
+           document.getElementById("valResult").innerHTML = "";
+           document.getElementById("valval").innerHTML = "";
        }
    </script>
 
