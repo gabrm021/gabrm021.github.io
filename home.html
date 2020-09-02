@@ -35,6 +35,8 @@
             .addEventListener('change',
                 function () {
 
+                    document.getElementById("valval").innerHTML = "";
+                    
                     if (browseFile.value.endsWith(".txt")){
 
                         var fr = new FileReader();
