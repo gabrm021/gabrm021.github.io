@@ -9,6 +9,10 @@
        <h2>Carga de datos</h2>
        <input  type ="file" id ="browseFile" />
        <p id= "valval"></p>
+       <p id= "cantChar"></p>
+       <p id= "linea"></p>
+
+
 
    </div>   
    
@@ -43,10 +47,13 @@
                         var alltext = ""
                         fr.onload = function () {
                             alltext = this.result;
-                            document.getElementById('contents').textContent = alltext;
-                            
+                            document.getElementById('cantChar').innerHTML = alltext.indexOf("\n");
+                            document.getElementById('linea').textContent = getoneline(alltext);
+                            document.getElementById('contents').textContent = takeoneline(alltext,getoneline(alltext));    
                         };
                         fr.readAsText(this.files[0]);
+
+                        
                     
                     }
                     else {
@@ -55,6 +62,19 @@
 
                 }
             );
+        function getoneline(s){
+            line = "";
+            pos = s.indexOf("\n");
+            line = s.substr(0,160);
+            s = s.replace(line,"");
+            return line;
+        }
+
+        function takeoneline(s,l){
+            s = s.replace(l,"");
+            s = s.trim();
+            return s;
+        }
 
 </script>
 
