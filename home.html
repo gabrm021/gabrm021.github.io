@@ -1,33 +1,38 @@
 <!doctype html>
 <html>
+
+<head>
+    <link rel ="stylesheet" href="dmimg.css">
+</head>
     <header>
         <h1>DMIMG: Clasificador de documentos</h1>
     </header>
     
 <body>
-   <div id="load">
-       <h2>Carga de datos</h2>
-       <input  type ="file" id ="browseFile" />
-       <p id= "valval"></p>
-       <p id= "cantChar"></p>
-       <p id= "linea"></p>
+    <div class="flex-container">
+        <div id="load">
+            <h2>Carga de datos</h2>
+            <input  type ="file" id ="browseFile" />
+            <p id= "valval"></p>
+            <p id= "cantChar"></p>
+            <p id= "linea"></p>
 
 
 
-   </div>   
-   
-   <div id="process">
-        <h2>Estado de proceso de clasificación</h2>
-        <p id= "procStatus"></p>
-        <p id = "iarray"></p>
+        </div>   
+        
+        <div id="process">
+                <h2>Estado de proceso de clasificación</h2>
+                <p id= "procStatus"></p>
+                <p id = "iarray"></p>
+            </div>
+        
+        <div id="results">
+                <h2>Resultados</h2>
+            <p id= "resulttxt"></p>
+            <pre id="contents"></pre>
+        </div>
     </div>
-   
-   <div id="results">
-        <h2>Resultados</h2>
-       <p id= "resulttxt"></p>
-       <pre id="contents"></pre>
-   </div>
-
    <script>
 
        function cleanFunc(){
