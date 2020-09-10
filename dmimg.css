@@ -4,13 +4,13 @@ header {
     color: #E4CFB6;
 }
 
-.flex-container{
+div.flex-container{
     display: flex;
     flex-direction: column;
     background-color: #E4CFB6;
 }
 
-.flex-container > div {
+div.flex-container > div {
     width: 90%;
     margin: 10px;
     background-color: #9e978e;
