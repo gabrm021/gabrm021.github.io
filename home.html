@@ -17,9 +17,9 @@
    </div>   
    
    <div id="process">
-        <h2>Proceso de clasificacion</h2>
-        <button type="button" onclick="classFunc()">Iniciar proceso de clasificacion</button>
-        <p id= "procStatus"> En proceso.../Proceso Finalizado</p>
+        <h2>Estado de proceso de clasificación</h2>
+        <p id= "procStatus"></p>
+        <p id = "iarray"></p>
     </div>
    
    <div id="results">
@@ -45,14 +45,26 @@
 
                         var fr = new FileReader();
                         var alltext = ""
+                        var aline = ""
+                        var resulines =""
+
                         fr.onload = function () {
                             alltext = this.result;
-                            document.getElementById('cantChar').innerHTML = alltext.indexOf("\n");
-                            document.getElementById('linea').textContent = getoneline(alltext);
-                            document.getElementById('contents').textContent = takeoneline(alltext,getoneline(alltext));    
+                            document.getElementById('procStatus').textContent = "En proceso";
+                            //document.getElementById('linea').textContent = getoneline(alltext);
+                            //document.getElementById('contents').textContent = takeoneline(alltext,getoneline(alltext));
+
+                            while (alltext.length > 0) {
+                                aline = getoneline(alltext)
+                                resulines = resulines +  "\n" + clasificarFun(aline);
+                                alltext = takeoneline(alltext,aline);
+                            }
+                            document.getElementById('contents').textContent = resulines;
+                            document.getElementById('procStatus').textContent = "Proceso de clasificación finalizado";
                         };
                         fr.readAsText(this.files[0]);
 
+                        
                         
                     
                     }
@@ -65,7 +77,10 @@
         function getoneline(s){
             line = "";
             pos = s.indexOf("\n");
-            line = s.substr(0,160);
+                if (pos == -1){
+                    pos = s.length-1;
+                } 
+            line = s.substr(0,pos+1);
             s = s.replace(line,"");
             return line;
         }
@@ -76,6 +91,568 @@
             return s;
         }
 
+        function clasificarFun(img){
+            var imgarray = img.split(";");
+            var imgid = imgarray[0];
+            var alto = imgarray[1];
+            var ancho = imgarray[2];
+            var ori0 = imgarray[3];
+            var ori255 = imgarray[4];
+            var dtf0 = imgarray[5];
+            var dtf255 = imgarray[6];
+            var int0 = imgarray[7];
+            var int255 = imgarray[8];
+            var smo0 = imgarray[9];
+            var smo255 = imgarray[10];
+            var sob0 = imgarray[11];
+            var sob255 = imgarray[12];
+            
+
+            if (alto > 427.500) {
+                if (alto > 1687.500) {
+                    if (alto > 2332) {
+                        if (sob255 > 291640) {
+                            if (ori0 > 791060.500) {
+                                if (alto > 4116.500) {clase = "C84"}
+                                else {clase =  "C69" }
+                            }
+                            else { //ori0 ≤ 791060.500
+                                if (dtf255 > 4534634) {
+                                    if (alto > 4117.500){
+                                        if (alto > 4305) {clase = "C70"}
+                                        else {clase =  "C64"}
+                                    }
+                                    else { //alto ≤ 4117.500
+                                        if (ori0 > 647939) {clase = "C69"}
+                                        else {clase =  "C68"}
+                                    }
+                                }
+                                else { //dtf255 ≤ 4534634
+                                    if (sob255 > 338514.500) {
+                                        if (smo0 > 49689.500) {
+                                            if (ori255 > 7678146) {
+                                                if (smo0 > 85060) {
+                                                    if (smo0 > 100160) {clase = "C65" }
+                                                    else {clase =  "C48" }
+                                                }
+                                                else {//smo0 ≤ 85060: "C65" }
+                                                    clase = "C65"
+                                                }
+                                            }
+                                            else {//ori255 ≤ 7678146
+                                                if (smo0 > 53979) { clase = "C63"}
+                                                else {//smo0 ≤ 53979
+                                                    if (ori255 > 7388510) {clase = "C65"}
+                                                    else {clase =  "C63"}
+                                                }
+                                            }
+                                        }
+                                        else{ //smo0 ≤ 49689.500
+                                            if (ori0 > 505361) {
+                                            if (sob255 > 380996.500) {clase = "C63"}
+                                            else {clase =  "C62"}
+                                            }
+                                            else {//ori0 ≤ 505361: "C65"}
+                                                clase =  "C65"
+                                            }
+                                        }
+                                    }
+                                    else { //sob255 ≤ 338514.500
+                                        if (ori0 > 394446){
+                                            if (smo0 > 82713.500){
+                                            if (ancho > 2502) {clase = "C48"}
+                                            else {clase =  "C63" }
+                                            }
+                                            else {//smo0 ≤ 82713.500
+                                                if (smo0 > 27998.500) {clase ="C65"  }       
+                                                else {//smo0 ≤ 27998.500
+                                                    if (alto > 3539) {clase = "C48"   } 
+                                                    else {clase =  "C65" }
+                                                }
+                                            }
+                                        }
+                                        else {//ori0 ≤ 394446: "C42"   } 
+                                            clase = "C42"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else {//sob255 ≤ 291640
+                            if (alto > 2677) {
+                                if (ori0 > 304203.500){
+                                    if (alto > 3185.500) {
+                                        if (alto > 3800){
+                                            if (alto > 4056) {
+                                                if (alto > 4149.500) {clase = "C70"}
+                                                else {clase =  "C69"}
+                                                }
+                                            else {//alto ≤ 4056: "C51" }       
+                                                clase = "C51"
+                                            }
+                                        }
+                                        else {//alto ≤ 3800
+                                            if (smo0 > 104312) {
+                                                if (ori0 > 385377) {
+                                                    if (smo0 > 211317) {
+                                                        if (ori0 > 415697.500) {clase = "C77" }        
+                                                        else {clase =  "C12"   }       
+                                                    }
+                                                    else {//smo0 ≤ 211317
+                                                        if (smo255 > 8400686.500) {clase = "C11"  }       
+                                                        else {//smo255 ≤ 8400686.500
+                                                            if (sob255 > 217852.500) {clase = "C15"}
+                                                            else {clase =  "C28"}
+                                                        }
+                                                    }
+                                                }
+                                                else {//ori0 ≤ 385377
+                                                    if (smo255 > 8417934) {clase = "C11" }
+                                                    else {clase =  "C15" }
+                                                }
+                                            }
+                                            else {//smo0 ≤ 104312
+                                                if (smo0 > 25208.500) {
+                                                    if (smo255 > 8112595.500) {
+                                                        if (sob255 > 164991.500){
+                                                            if (ori0 > 323814) {clase = "C72" }
+                                                            else {clase =  "C27" }
+                                                        }
+                                                        else {//sob255 ≤ 164991.500: "C11"}
+                                                            clase = "C11"
+                                                        }
+                                                    }
+                                                    else {//smo255 ≤ 8112595.500: "C36" }
+                                                        clase = "C36"
+                                                    }
+                                                }
+                                                else {//smo0 ≤ 25208.500: "C27"}
+                                                    clase = "C27"
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {//alto ≤ 3185.500
+                                        if (alto > 2880.500) {clase = "C56"}
+                                        else {//alto ≤ 2880.500
+                                            if (ori0 > 431583.500) {clase = "C56"}
+                                            else {clase =  "C55"}
+                                        }
+                                    }
+                                }
+                                else {//ori0 ≤ 304203.500
+                                    if (sob255 > 168183){
+                                        if (alto > 3641) {clase ="C13"}
+                                        if (!ancho > 2609.500) {clase = "C54" }
+                                    }
+                                    if (!ancho > 2569) {clase = "C57"}
+                                }
+                                if (!smo0 > 73028) {
+                                    if (ancho > 3064.500) {clase = "C15"}
+                                    else {clase =  "C54"}
+                                }
+                            }
+                        }
+                    }
+                    else { //alto ≤ 2332
+                        if (sob0 > 3308324.500) {
+                            if (ancho > 2029.500) {clase = "C18"}
+                            else {//ancho ≤ 2029.500
+                                if (INT255 > 15.500) {
+                                    if (ori0 > 213433) {clase = "C71"}
+                                    else {clase =  "C17"}
+                                }
+                                else {//INT255 ≤ 15.500: "C61"}
+                                    clase = "C61"
+                                }
+                            }
+                        }
+                        else {//sob0 ≤ 3308324.500
+                            if (ancho > 1938) {
+                                if (int0 > 57455) {clase = "C71"}
+                                else {clase =  "C61"}
+                            }
+                            else {//ancho ≤ 1938
+                                if (sob255 > 149842.500) {
+                                    if (smo0 > 55819.500) {clase = "C17"}
+                                    else {clase =  "C71"}
+                                }
+                                else {//sob255 ≤ 149842.500: "C61"}
+                                    clase = "C61"
+                                }
+                            }
+                        }
+                    }
+                }
+                else {//alto ≤ 1687.500
+                    if (smo0 > 40413.500){
+                        if(smo255 > 1281998){
+                            if (ancho > 949.500){
+                                if (ancho > 1982.500){
+                                    if (alto > 1372){
+                                        if (smo0 > 56218) {
+                                            if (alto > 1537.500) {clase = "C38" }
+                                            else {//alto ≤ 1537.500
+                                                if (ancho > 1996) {clase = "C41" }
+                                                else {clase =  "C38" }
+                                            }
+                                        }
+                                        else {//smo0 ≤ 56218
+                                            if (ori255 > 2360865.500) {clase = "C38" }
+                                            else {clase =  "C41" }
+                                        }
+                                    }
+                                    else {//alto ≤ 1372: "C74" }
+                                        clase = "C74"
+                                    }
+                                }
+                                else {//ancho ≤ 1982.500
+                                    if (dtf0 > 1401634.500){
+                                        if (sob255 > 163500) {
+                                            if (dtf0 > 1458179.500) {clase = "C39" }
+                                            else {clase =  "C26" }
+                                        }
+                                        else {//sob255 ≤ 163500
+                                            if (ori0 > 252854) {clase = "C39"}
+                                            else {clase =  "C26" }
+                                        }
+                                    }
+                                    else {//dtf0 ≤ 1401634.500
+                                        if (alto > 1331){
+                                            if (sob255 > 109708) {clase = "C76" }
+                                            else {clase =  "C26" }
+                                        }
+                                        else {//alto ≤ 1331: "C74" }
+                                            clase ="C74"
+                                        }
+                                    }
+                                }
+                            }
+                            else {//ancho ≤ 949.500
+                                if (sob255 > 90090.500){
+                                    if (smo0 > 68980) {clase = "C59" }
+                                    else {clase =  "C49" }
+                                    }
+                                else {//sob255 ≤ 90090.500: "C24"}
+                                    clase = "C24"
+                                }
+                            }
+                        }
+                        else {//smo255 ≤ 1281998
+                            if (sob255 > 70010.500) {clase = "C59" }
+                            else {//sob255 ≤ 70010.500
+                                if (sob255 > 46550){
+                                    if (int0 > 16407.500){
+                                        if (ancho > 916) {clase = "C15" }
+                                        else {clase =  "C07" }
+                                    }
+                                    else {//int0 ≤ 16407.500
+                                        if (ori255 > 968932) {clase = "C15"}
+                                        else {clase =  "C30"}
+                                    }
+                                }
+                                else { //sob255 ≤ 46550
+                                    if (sob255 > 29953) {clase = "C29" }
+                                    else {clase =  "C15" }
+                                }
+                            }
+                        }
+                    }
+                    else {//smo0 ≤ 40413.500
+                        if (sob255 > 74913.500){
+                            if (ancho > 1360){
+                                if (alto > 1446) {
+                                    if (ancho > 2004) {clase = "C38" }
+                                    else {//ancho ≤ 2004
+                                            if (ori0 > 185942){
+                                                if (sob255 > 166874){
+                                                    if (int0 > 37458.500) {clase = "C26"}
+                                                    else {clase =  "C39"}
+                                                }
+                                                else {//sob255 ≤ 166874
+                                                    if (dtf0 > 1377364) {clase = "C39"}
+                                                    else {clase =  "C26"}
+                                                }
+                                            }
+                                            else {//ori0 ≤ 185942
+                                                if (ori255 > 2446775.500) {clase = "C16"}
+                                                else {clase =  "C26"}
+                                            }
+                                    }
+                                }
+                                else {//alto ≤ 1446
+                                    if (alto > 1345) {
+                                        if (dtf255 > 1263160){
+                                            if (ori0 > 265100.500) {clase = "C39"}
+                                            else {//ori0 ≤ 265100.500
+                                                if (sob255 > 98624.500) {clase = "C76"}
+                                                else {clase =  "C26"}
+                                            }
+                                        }
+                                        else {//dtf255 ≤ 1263160: "C75"}
+                                            clase = "C75"
+                                        }
+                                    }
+                                    else {//alto ≤ 1345
+                                        if (ancho > 1934.500){
+                                            if (alto > 1129) {clase = "C74"}
+                                            else {clase =  "C34"}
+                                        }
+                                        else {//ancho ≤ 1934.500
+                                            if (ori255 > 2020390.500) {clase = "C75"}
+                                            else {//ori255 ≤ 2020390.500
+                                                if (sob255 > 100432) {clase = "C26"}
+                                                else {clase =  "C33"}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else {//ancho ≤ 1360
+                                if (smo255 > 1300634.500) {
+                                    if (smo0 > 15602) {
+                                        if (sob255 > 109008) {
+                                            if (int255 > 4.500) {clase = "C80"}
+                                            else {//INT255 ≤ 4.500
+                                                if (ori255 > 1181381) {clase = "C44"}
+                                                else {clase =  "C21"}
+                                            }
+                                        }
+                                        else {//sob255 ≤ 109008
+                                            if(int0 > 23246){
+                                                if (ancho > 942) {clase = "C64"}
+                                                else {//ancho ≤ 942
+                                                    if (smo0 > 24004.500) {clase = "C44"}
+                                                    else {clase =  "C80"}
+                                                }
+                                            }
+                                            else {//int0 ≤ 23246
+                                                if (smo0 > 28309) {clase = "C24"}
+                                                else {//smo0 ≤ 28309
+                                                    if (ori255 > 1135391) {clase = "C44"}
+                                                    else {clase =  "C21"}
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {//smo0 ≤ 15602
+                                        if (ori0 > 131547.500) {clase = "C21"}
+                                        else {//ori0 ≤ 131547.500
+                                            if (ori255 > 1227796) {
+                                                if (ori0 > 91918.500) {clase = "C64"}
+                                                else {//ori0 ≤ 91918.500
+                                                        if (dtf0 > 729832) { clase = "C66"}
+                                                        else {//dtf0 ≤ 729832
+                                                            if (smo0 > 1056.500) {clase = "C24"}
+                                                            else {clase =  "C64"}
+                                                        }
+                                                }
+                                            }
+                                            else {//ori255 ≤ 1227796: "C80"}
+                                                clase = "C80"
+                                            }
+                                        }
+                                    }
+                                }
+                                else {//smo255 ≤ 1300634.500
+                                    if (smo255 > 1143163.500){
+                                        if (alto > 1345) {clase = "C59"}
+                                        else {//alto ≤ 1345
+                                            if (sob255 > 82362) {
+                                                if (ori0 > 87657) {clase = "C65"}
+                                                else {clase =  "C48"}
+                                            }
+                                            else {//sob255 ≤ 82362
+                                                if (ori0 > 69363.500) {
+                                                    if (ancho > 911.500) {clase = "C58"}
+                                                    else {clase =  "C65"}
+                                                }
+                                                else {//ori0 ≤ 69363.500: "C59"}
+                                                    clase = "C59";
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {//smo255 ≤ 1143163.500
+                                        if (smo0 > 16439){
+                                            if (ori0 > 125724.500) {clase = "C59"}
+                                            else {clase =  "C15"}
+                                        }
+                                        else {//smo0 ≤ 16439
+                                            if (sob0 > 1026135) {clase = "C48"}
+                                            else {clase =  "C59"}
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else {//sob255 ≤ 74913.500
+                            if (alto > 493.500) {
+                                if (alto > 583.500) {
+                                    if (ori255 > 1041633.500) {
+                                        if (sob255 > 53920.500) {
+                                            if (alto > 1142.500){
+                                                if (alto > 1345.500){
+                                                    if (alto > 1490) {
+                                                        if (alto > 1534) {clase = "C24"}
+                                                        else {clase = "C70"}
+                                                    }
+                                                    else {//alto ≤ 1490
+                                                        if (ancho > 1388) {clase = "C26"}
+                                                        else {//ancho ≤ 1388
+                                                            if (ori255 > 1159447.500) {clase = "C68"}
+                                                            else {clase =  "C69"}
+                                                        }
+                                                    }
+                                                }
+                                                else {//alto ≤ 1345.500
+                                                    if (int0 > 17260.500){
+                                                        if (ori0 > 61366) {
+                                                            if (ancho > 913) {clase = "C26"}
+                                                            else {clase =  "C36"}
+                                                        }
+                                                        else {//ori0 ≤ 61366: "C06"}
+                                                            clase = "C06"
+                                                        }
+                                                    }
+                                                    else {//int0 ≤ 17260.500: "C23"}
+                                                    clase = "C23"
+                                                    }
+                                                }
+                                            }
+                                            else {//alto ≤ 1142.500: "C34"}
+                                                clase = "C34"
+                                            }
+                                        }
+                                        else {//sob255 ≤ 53920.500
+                                            if (smo0 > 9212) {
+                                                if (ori0 > 46392){
+                                                    if (ori0 > 56787) {
+                                                        if (int0 > 20369) {
+                                                            if (ori0 > 73070.500) {clase = "C16"}
+                                                            else {clase =  "C29" }
+                                                        }
+                                                        else {//int0 ≤ 20369
+                                                            if (smo0 > 22868) {clase = "C11" }
+                                                            else {clase = "C57"  } 
+                                                        }
+                                                    }
+                                                    else {//ori0 ≤ 56787: "C77"   }
+                                                        clase = "C77";
+                                                    }
+                                                }
+                                                else {//ori0 ≤ 46392
+                                                    if (INT255 > 15.500) {clase = "C23"}
+                                                    else {//INT255 ≤ 15.500
+                                                        if (smo0 > 13248) {clase = "C23"}    
+                                                        else {clase =  "C08" }
+                                                    }
+                                                }
+                                            }
+                                            else {//smo0 ≤ 9212
+                                                if (ancho > 1418.500) {clase = "C16"}         
+                                                else {//ancho ≤ 1418.500
+                                                        if (smo255 > 1121608) {
+                                                            if (ori0 > 53165.500) {clase = "C08" }
+                                                            else {//ori0 ≤ 53165.500
+                                                                if (ori0 > 47538.500) {clase = "C06" }  
+                                                                else {clase = "C23"}
+                                                            }
+                                                        }
+                                                        else {//smo255 ≤ 1121608
+                                                            if (smo0 > 2321) {clase = "C23"  }
+                                                            else {clase =  "C08"}
+                                                        }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else {//ori255 ≤ 1041633.500
+                                        if (int0 > 16551.500) {
+                                            if (sob255 > 48909.500) {
+                                                if (smo0 > 251.500){
+                                                    if (smo255 > 1156693) {clase = "C36"}
+                                                    else {clase = "C06" }     
+                                                }
+                                                else {//smo0 ≤ 251.500: "C27"}
+                                                    clase = "C27"
+                                                }
+                                            }    
+                                            else {//sob255 ≤ 48909.500
+                                                if (ori0 > 14417.500) {
+                                                    if (ancho > 900.500) {clase = "C57" }
+                                                    else {clase =  "C30"  }
+                                                } 
+                                                else {//ori0 ≤ 14417.500: "C23" }
+                                                    clase = "C23"
+                                                }
+                                            }
+                                        }
+                                        else {//int0 ≤ 16551.500
+                                            if (alto > 748.500) {
+                                                if (sob255 > 59242){
+                                                    if (sob0 > 1010576) {
+                                                        if (ori255 > 989382) {
+                                                            if (smo0 > 3468) {clase = "C15" }      
+                                                            else {clase =  "C27"  }
+                                                        }
+                                                        else { //ori255 ≤ 989382: "C11" }
+                                                            clase = "C11"
+                                                        }
+                                                    }
+                                                    else {//sob0 ≤ 1010576: "C59"  }
+                                                        clase = "C59"
+                                                    }           
+                                                }
+                                                else {//sob255 ≤ 59242
+                                                    if (ori0 > 25145.500){
+                                                        if (ori0 > 31169.500) {clase = "C57" }      
+                                                        else {clase =  "C27"}
+                                                    }        
+                                                    else {//ori0 ≤ 25145.500: "C23" }          
+                                                        clase = "C23"
+                                                    }
+                                                }
+                                            }
+                                            else {//alto ≤ 748.500
+                                                if (dtf0 > 235305.500) {
+                                                    if (ancho > 822) {clase = "C24" }
+                                                    else {clase =  "C61"}
+                                                }
+                                                else {//dtf0 ≤ 235305.500: "C26"}
+                                                    clase = "C26"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                else {//alto ≤ 583.500
+                                    if (ancho > 708) {clase= "C37"}
+                                    else {clase =  "C26"}
+                                }
+                            }
+                            else { //alto ≤ 493.500
+                                if (ancho > 686) {
+                                        if (alto > 458) {clase = "C74" }
+                                        else {clase =  "C45" }
+                                }
+                                else {clase =  "C01" }
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                if (alto > 266) {
+                    if (alto > 402) {clase = "C01"} 
+                    else {clase = "C03"}
+                 }
+                else {clase = "C02";}
+            }
+
+
+            return imgid + " " + clase;
+        }
 </script>
 
 </body>
