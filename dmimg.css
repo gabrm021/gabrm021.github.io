@@ -1,11 +1,14 @@
 
 header {
     background-color: #39444A;
-    color: #E4CFB6;
+    color: #DFB481;
     width: 100%;
-    height: 70px;
+    height: 100px;
 }
 
+h3{
+    color: #39444A;
+}
 div.flex-container{
     display: flex;
     flex-direction: column;
@@ -17,5 +20,6 @@ div.flex-container > div {
     width: 90%;
     background-color: #9e978e;
     align-self: center;
+    margin-bottom: 10px;
     
 }
