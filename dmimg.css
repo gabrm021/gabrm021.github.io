@@ -1,38 +1,65 @@
 
 header {
-    background-color: #39444A;
+    background-color: #262d31;
     color: #DFB481;
     width: 100%;
     height: 100px;
 }
 h1 {
     font-family: Helvetica, "Helvetica Neue", sans-serif;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 60px;
+
 }
 
 h2  {
     font-family: Helvetica, "Helvetica Neue", sans-serif;
-
+    font-size: 20px;
+    margin-top: 0px;
+    margin-left: 10px;
 }
 
 .box-tittle {
-    color: #39444A;
+    color: #e4cfb6;
     font-family: Helvetica, "Helvetica Neue", sans-serif;
-
+    margin-left: 10px;
 }
 
 
-div.flex-container{
+div.flex-containerp{
     display: flex;
     flex-direction: column;
-    background-color: #E4CFB6;
     width: 100%;
+    background-color: #e4cfb6;
 }
 
-div.flex-container > div {
+div.flex-containerp > div {
     width: 90%;
-    background-color: #9e978e;
     align-self: center;
     margin-bottom: 10px;
     margin-top: 10px;
     
+} 
+
+div.flex-containerh{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+div.flex-containerh > div {
+    width: 100%;
+    align-self: center;
+ 
+} 
+
+.main-tit {
+    background-color: #39444A;
+    padding: 10px;
+}
+.container {
+    background-color: #f0e9e2;
+    padding: 10px;
 }
