@@ -55,11 +55,11 @@ div.flex-containerh > div {
  
 } 
 
-div.flex-containerh.main-tit {
+.main-tit {
     background-color: #39444A;
     padding: 10px;
 }
-div.flex-containerh.container {
+.container {
     background-color: #f0e9e2;
     padding: 10px;
 }
