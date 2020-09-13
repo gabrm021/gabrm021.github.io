@@ -11,25 +11,37 @@
     </header>
     
 <body>
-    <div class="flex-container">
-        <div id="load">
-            <h3 class="box-tittle">Carga de datos</h3>
-            <input  type ="file" id ="browseFile" />
-            <p id= "valval"></p>
-            <p id= "cantChar"></p>
-            <p id= "linea"></p>
-        </div>   
+    <div class="flex-containerp">
+        <div class="flex-containerh">
+            <div class="main-tit"> 
+                <h3 class="box-tittle">Carga de datos</h3>
+                <p id= "cantChar"></p>
+                <p id= "linea"></p>
+            </div>
+
+            <div class = "container">
+                <input  type ="file" id ="browseFile" />
+                <p id= "valval"></p>
+            </div>
+        </div>
         
-        <div id="process">
-                <h3>Estado de proceso de clasificación</h3>
-                <p id= "procStatus"></p>
+        <div class="flex-containerh">
+            <div class="main-tit">
+                <h3 class="box-tittle">Estado de proceso de clasificación</h3>
                 <p id = "iarray"></p>
             </div>
+            <div class = "container">
+                <p id= "procStatus">...</p>          
+            </div>
+        </div>
         
-        <div id="results">
-                <h3>Resultados</h3>
-            <p id= "resulttxt"></p>
-            <pre id="contents"></pre>
+        <div class="flex-containerh">
+            <div class="main-tit">
+                <h3 class="box-tittle">Resultados</h3>
+            </div>
+            <div class = "container">
+                <pre id="contents"></pre>
+            </div>
         </div>
     </div>
    <script>
