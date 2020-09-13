@@ -40,7 +40,6 @@ div.flex-containerp > div {
     align-self: center;
     margin-bottom: 10px;
     margin-top: 10px;
-    
 } 
 
 div.flex-containerh{
@@ -58,8 +57,12 @@ div.flex-containerh > div {
 .main-tit {
     background-color: #39444A;
     padding: 10px;
+    border-top-right-radius: 25px;
+
 }
 .container {
     background-color: #f0e9e2;
     padding: 10px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
