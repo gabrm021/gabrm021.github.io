@@ -67,9 +67,7 @@
                         fr.onload = function () {
                             alltext = this.result;
                             document.getElementById('procStatus').textContent = "En proceso";
-                            //document.getElementById('linea').textContent = getoneline(alltext);
-                            //document.getElementById('contents').textContent = takeoneline(alltext,getoneline(alltext));
-
+                         
                             while (alltext.length > 0) {
                                 aline = getoneline(alltext)
                                 resulines = resulines +  "\n" + clasificarFun(aline);
@@ -78,18 +76,16 @@
                             document.getElementById('contents').textContent = resulines;
                             document.getElementById('procStatus').textContent = "Proceso de clasificación finalizado";
                         };
-                        fr.readAsText(this.files[0]);
-
-                        
-                        
-                    
+                        fr.readAsText(this.files[0]);            
                     }
                     else {
-                        document.getElementById("valval").innerHTML = "Solo se adminten documentos.txt";
+                        document.getElementById("valval").innerHTML = "Solo se adminten documentos .txt";
                     }
 
                 }
             );
+
+
         function getoneline(s){
             line = "";
             pos = s.indexOf("\n");
@@ -122,7 +118,6 @@
             var smo255 = imgarray[10];
             var sob0 = imgarray[11];
             var sob255 = imgarray[12];
-            
 
             if (alto > 427.500) {
                 if (alto > 1687.500) {
@@ -274,11 +269,11 @@
                         if (sob0 > 3308324.500) {
                             if (ancho > 2029.500) {clase = "C18"}
                             else {//ancho ≤ 2029.500
-                                if (INT255 > 15.500) {
+                                if (int255 > 15.500) {
                                     if (ori0 > 213433) {clase = "C71"}
                                     else {clase =  "C17"}
                                 }
-                                else {//INT255 ≤ 15.500: "C61"}
+                                else {//int255 ≤ 15.500: "C61"}
                                     clase = "C61"
                                 }
                             }
@@ -346,7 +341,7 @@
                             }
                             else {//ancho ≤ 949.500
                                 if (sob255 > 90090.500){
-                                    if (smo0 > 68980) {clase = "C59" }
+                                    if (smo0 > 68980) {clase = "C59"}
                                     else {clase =  "C49" }
                                     }
                                 else {//sob255 ≤ 90090.500: "C24"}
@@ -429,7 +424,7 @@
                                     if (smo0 > 15602) {
                                         if (sob255 > 109008) {
                                             if (int255 > 4.500) {clase = "C80"}
-                                            else {//INT255 ≤ 4.500
+                                            else {//int255 ≤ 4.500
                                                 if (ori255 > 1181381) {clase = "C44"}
                                                 else {clase =  "C21"}
                                             }
@@ -558,8 +553,8 @@
                                                     }
                                                 }
                                                 else {//ori0 ≤ 46392
-                                                    if (INT255 > 15.500) {clase = "C23"}
-                                                    else {//INT255 ≤ 15.500
+                                                    if (int255 > 15.500) {clase = "C23"}
+                                                    else {//int255 ≤ 15.500
                                                         if (smo0 > 13248) {clase = "C23"}    
                                                         else {clase =  "C08" }
                                                     }
@@ -663,12 +658,13 @@
                     if (alto > 402) {clase = "C01"} 
                     else {clase = "C03"}
                  }
-                else {clase = "C02";}
+                else {clase = "C02"}
             }
-
 
             return imgid + " " + clase;
         }
+
+
 </script>
 
 </body>
