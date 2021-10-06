@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel ="stylesheet" href="style01.css">
+</head>
+
+<header>
+    <p>cabedera</p>
+</header>
+    
+<body>
+    <div class="flex-containerp">
+        <div style="flex-grow: 2">
+            <div class="flex-containerh">
+                <div>
+                    <video width="840" controls>
+                        <source src="video01.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div>
+                    <P>Salta - Argentina</P>
+                    <p>Título del video</p>
+                    <p>dd/mm/aaaa</p>
+                </div>
+
+                <div>
+                    <p> Nombre del canal</p>
+                    <p> Descripcion del canal. </p>
+                </div>
+                <div>COMENTARIOS DESACTIVADOS</div>
+
+            </div>
+        </div> 
+        <div style="flex-grow: 1">  
+            <div class="flex-containerh" id="listvideo">
+                <video id = "minivideo" width="240" controls>
+                    <source src="video01.mp4" type="video/mp4">
+                </video>
+
+            </div>
+        </div>
+    
+    </div>
+        
+
+
+    <script>
+        document.getElementById('minivideo').setAttribute('src', 'video02.mp4');
+    
+        var videosmall = document.createElement("video");
+        videosmall.src = 'video01.mp4';
+        videosmall.width = '240';
+        videosmall.controls = true;
+        videosmall.id = 'smallvideo';
+        videosmall.autoplay = false;
+
+        var element = document.getElementById("listvideo");
+
+        element.appendChild(videosmall);
+
+    
+        var videosmall = document.createElement("video");
+        videosmall.src = 'video02.mp4';
+        videosmall.width = '240';
+        videosmall.controls = true;
+        videosmall.id = 'smallvideo';
+        videosmall.autoplay = false;
+
+        var element = document.getElementById("listvideo");
+
+        element.appendChild(videosmall);
+
+
+        var videosmall = document.createElement("video");
+        videosmall.src = 'video03.mp4';
+        videosmall.width = '240';
+        videosmall.controls = true;
+        videosmall.id = 'smallvideo';
+        videosmall.autoplay = false;
+
+        var element = document.getElementById("listvideo");
+
+        element.appendChild(videosmall);
+
+        
+        var videosmall = document.createElement("video");
+        videosmall.src = 'video04.mp4';
+        videosmall.width = '240';
+        videosmall.controls = true;
+        videosmall.id = 'smallvideo';
+        videosmall.autoplay = false;
+
+        var element = document.getElementById("listvideo");
+
+        element.appendChild(videosmall);
+
+        document.getElementById("smallvideo").addEventListener("play", myfunction());
+
+        function myfunction(){
+            alert("Hey");
+        }
+    </script>
+
+</body>
+<footer>
+    <p>pie de pagina</p>
+</footer>
+</html>

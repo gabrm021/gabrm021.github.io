@@ -66,3 +66,9 @@ div.flex-containerh > div {
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
 }
+
+.contents {  
+    
+    height: 20px;
+
+}

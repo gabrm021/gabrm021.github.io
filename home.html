@@ -41,6 +41,9 @@
             </div>
             <div class = "container">
                 <pre id="contents"></pre>
+                <div id="imageTitle"></div> </div>
+                <div id="imageContainer"></div>
+
             </div>
         </div>
     </div>
@@ -63,6 +66,9 @@
                         var alltext = ""
                         var aline = ""
                         var resulines =""
+                        var container = document.getElementById('contents');
+                        var imagetitle = document.getElementById('imageTitle')
+                        var docFrag = document.createDocumentFragment();
 
                         fr.onload = function () {
                             alltext = this.result;
@@ -70,11 +76,22 @@
                          
                             while (alltext.length > 0) {
                                 aline = getoneline(alltext)
-                                resulines = resulines +  "\n" + clasificarFun(aline);
+                                //resulines = resulines +  "\n" + clasificarFun(aline);
+                                resulines = clasificarFun(aline);
                                 alltext = takeoneline(alltext,aline);
+                                var img = document.createElement('img');
+                                var imglitulo = document.createElement('p');
+                                var linearray = aline.split(";");
+                                var imgname = linearray[0];
+                                img.src = "/img/" + imgname + ".png";
+                                img.style.height = '50px';
+                                imglitulo.textContent = resulines;
+                                docFrag.appendChild(imglitulo);
+                                docFrag.appendChild(img);
                             }
-                            document.getElementById('contents').textContent = resulines;
+                            //document.getElementById('contents').textContent = resulines;
                             document.getElementById('procStatus').textContent = "Proceso de clasificación finalizado";
+                            container.appendChild(docFrag);
                         };
                         fr.readAsText(this.files[0]);            
                     }
@@ -131,7 +148,7 @@
                                 if (dtf255 > 4534634) {
                                     if (alto > 4117.500){
                                         if (alto > 4305) {clase = "C70"}
-                                        else {clase =  "C64"}
+                                        else {clase =  "Solicitud de Sepelio Colectivo C64"}
                                     }
                                     else { //alto ≤ 4117.500
                                         if (ori0 > 647939) {clase = "C69"}
@@ -431,7 +448,7 @@
                                         }
                                         else {//sob255 ≤ 109008
                                             if(int0 > 23246){
-                                                if (ancho > 942) {clase = "C64"}
+                                                if (ancho > 942) {clase = "Solicitud de Sepelio Colectivo C64"}
                                                 else {//ancho ≤ 942
                                                     if (smo0 > 24004.500) {clase = "C44"}
                                                     else {clase =  "C80"}
@@ -450,12 +467,12 @@
                                         if (ori0 > 131547.500) {clase = "C21"}
                                         else {//ori0 ≤ 131547.500
                                             if (ori255 > 1227796) {
-                                                if (ori0 > 91918.500) {clase = "C64"}
+                                                if (ori0 > 91918.500) {clase = "Solicitud de Sepelio Colectivo C64"}
                                                 else {//ori0 ≤ 91918.500
                                                         if (dtf0 > 729832) { clase = "C66"}
                                                         else {//dtf0 ≤ 729832
                                                             if (smo0 > 1056.500) {clase = "C24"}
-                                                            else {clase =  "C64"}
+                                                            else {clase =  "Solicitud de Sepelio Colectivo C64"}
                                                         }
                                                 }
                                             }
@@ -647,7 +664,7 @@
                                         if (alto > 458) {clase = "C74" }
                                         else {clase =  "C45" }
                                 }
-                                else {clase =  "C01" }
+                                else {clase =  "Acuse de Recibo Andreani C01" }
                             }
                         }
                     }
@@ -655,8 +672,8 @@
             }
             else {
                 if (alto > 266) {
-                    if (alto > 402) {clase = "C01"} 
-                    else {clase = "C03"}
+                    if (alto > 402) {clase = "Acuse de Recibo Andreani C01"} 
+                    else {clase = "Acuse de Recibo Flash C03"}
                  }
                 else {clase = "C02"}
             }
