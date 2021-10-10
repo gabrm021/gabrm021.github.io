@@ -1,0 +1,38 @@
+#hdr {
+    height: 20px;
+    background-color: black;
+    color:white;
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#titulo {
+
+    max-height: 80px;
+    background-color:whitesmoke;
+    color: black;
+    text-align: center;
+    padding: 20px;
+    font-size: 30px;
+    font-family: Serif;
+}
+
+.fotodescr{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    overflow-x: auto;
+
+}
+
+.seccion {
+    width: 100%;
+    height: 100%;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
