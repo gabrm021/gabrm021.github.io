@@ -38,3 +38,85 @@
     font-family: Cursive;
     color: white;
 }
+
+.Entradas{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    overflow-y: auto;
+    background-color: #33cccc;
+
+}
+
+.Principales{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    overflow-y: auto;
+    background-color: #2eb8b8;
+
+}
+.Postres{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    overflow-y: auto;
+    background-color: #29a3a3;
+
+}
+
+.Bebidas{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    overflow-y: auto;
+    background-color: #248f8f;
+
+}
+
+.contprincipalA {
+    width: 100px;
+    height: 100%;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-family: Cursive;
+    color: white;
+}
+
+.contprincipalB {
+    width: 100%;
+    height: 100%;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-family: Cursive;
+    color: white;
+    background-color: #2eb8b8;
+}
+
+.contprincipalC {
+    width: 100px;
+    height: 100%;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-family: Cursive;
+    color: white;
+    background-color: #33cccc;
+}
+
+.contprincipalD {
+    width: 100%;
+    height: 100%;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-family: Cursive;
+    color: white;
+    background-color: #2eb8b8;
+}
