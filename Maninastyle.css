@@ -16,8 +16,9 @@
     color: black;
     text-align: center;
     padding: 20px;
-    font-size: 30px;
+    font-size: 40px;
     font-family: Serif;
+    font-weight: bold;
 }
 
 .fotodescr{
@@ -60,6 +61,7 @@
     font-family: Cursive;
     font-size: 20px;
     color: white;
+    font-weight: bold;
 }
 
 .contprincipalB {
@@ -88,3 +90,26 @@
     background-color: #47d1d1;
 }
 
+
+#last {
+    height: 40px;
+    background-color: black;
+    color:white;
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+#ftr{
+    height: 40px;
+    background-color: black;
+    color:white;
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    font-size: 15px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
